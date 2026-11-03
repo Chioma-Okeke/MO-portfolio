@@ -1,0 +1,56 @@
+import type { Metadata } from "next"
+import Link from "next/link"
+import { buttonVariants } from "@/components/ui/button"
+import { Reveal } from "@/components/motion/reveal"
+import { Eyebrow } from "@/components/site/bits"
+import { projects } from "@/content/projects"
+import { WorkList } from "./work-list"
+
+export const metadata: Metadata = {
+  title: "Work",
+  description: "Engineering projects, security research, and digital experiments.",
+}
+
+export default function WorkPage() {
+  return (
+    <>
+      <section className="bg-surface px-6 py-20 text-center md:py-28">
+        <Reveal>
+          <Eyebrow className="tracking-[0.24em]">Portfolio</Eyebrow>
+          <h1 className="mt-6 font-serif text-5xl leading-[1.05] font-medium tracking-tight md:text-7xl">
+            Thoughtfully built.
+            <br />
+            Purposefully made.
+          </h1>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <p className="mx-auto mt-8 max-w-xl font-serif text-lg leading-relaxed text-muted-foreground italic">
+            &ldquo;A selection of engineering projects, security research, and digital experiments focused on
+            resilience, clarity, and the human element.&rdquo;
+          </p>
+        </Reveal>
+      </section>
+
+      <WorkList projects={projects} />
+
+      <section className="border-t border-border px-6 py-20 md:py-28">
+        <Reveal className="mx-auto flex max-w-[1440px] flex-col items-center gap-8 text-center md:flex-row md:justify-between md:px-18 md:text-left">
+          <div>
+            <h2 className="font-serif text-4xl leading-tight">
+              Have a project
+              <br />
+              in mind?
+            </h2>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+              I&apos;m always open to discussing security and software engineering roles, or research
+              collaborations focused on building systems people can trust.
+            </p>
+          </div>
+          <Link href="/contact" className={buttonVariants({ size: "cta" })}>
+            Start a conversation
+          </Link>
+        </Reveal>
+      </section>
+    </>
+  )
+}
