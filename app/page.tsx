@@ -38,7 +38,7 @@ export default function Home() {
             <ArrowRight className="mt-2 ml-2 size-5 text-wine" strokeWidth={1.25} />
           </Reveal>
         </div>
-        <ImageReveal className="relative min-h-[460px] md:min-h-0">
+        <ImageReveal className="relative min-h-115 md:min-h-0">
           <Photo
             src={portraits.hero}
             alt="Portrait of Chioma"
@@ -54,7 +54,7 @@ export default function Home() {
 
       {/* Stats */}
       <section className="border-y border-border bg-surface">
-        <Stagger className="mx-auto grid max-w-[1440px] grid-cols-2 gap-x-6 gap-y-10 px-6 py-14 md:grid-cols-4 md:px-24">
+        <Stagger className="mx-auto grid max-w-360 grid-cols-2 gap-x-6 gap-y-10 px-6 py-14 md:grid-cols-4 md:px-24">
           {stats.map((s) => (
             <StaggerItem key={s.label}>
               <Eyebrow className="text-[10px] tracking-[0.14em]">{s.label}</Eyebrow>

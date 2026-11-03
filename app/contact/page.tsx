@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
-import { Heart, MailOpen } from "lucide-react"
+import { Heart } from "lucide-react"
 import { ImageReveal, Reveal } from "@/components/motion/reveal"
 import { Eyebrow, Script, Sparkle } from "@/components/site/bits"
-import { site } from "@/content/site"
+import { Photo } from "@/components/site/photo"
+import { portraits, site } from "@/content/site"
 import { ContactForm } from "./contact-form"
 
 export const metadata: Metadata = {
@@ -48,9 +49,16 @@ export default function ContactPage() {
           </Reveal>
 
           <ImageReveal delay={0.15} className="relative hidden md:block">
-            <div className="ml-auto flex aspect-[4/5] max-w-lg rotate-2 flex-col items-center justify-center border border-blush/60 bg-background shadow-[0_40px_60px_-30px_rgba(31,29,29,0.3)] transition-transform duration-1000 ease-soft hover:rotate-0">
-              <MailOpen className="size-24 text-ink/10" strokeWidth={1.25} />
-              <p className="mt-4 font-serif text-lg text-ink/15 italic">Let&apos;s connect</p>
+            <div className="ml-auto max-w-md rotate-2 border border-blush/60 bg-background p-3 shadow-[0_40px_60px_-30px_rgba(31,29,29,0.3)] transition-transform duration-1000 ease-soft hover:rotate-0">
+              <Photo
+                src={portraits.contact}
+                alt="Chioma smiling and holding up a peace sign"
+                tone="blush"
+                priority
+                zoom={false}
+                sizes="(min-width: 768px) 440px, 100vw"
+                className="aspect-[3/4]"
+              />
             </div>
             <div className="absolute -bottom-6 left-0 flex -rotate-12 items-center gap-1 lg:left-4">
               <Script className="text-2xl">don&apos;t be a stranger</Script>

@@ -13,6 +13,12 @@ const icons = {
   code: Code,
 }
 
+export const imagePositions = {
+  "left-top": "object-left-top",
+  "right-top": "object-right-top",
+  top: "object-top",
+}
+
 const tones = {
   light: "bg-[#f3f0ec] border-[#e6e0da] text-[#d9d3cc]",
   blush: "bg-[#f6efee] border-[#ebdfdc] text-[#ddd2cf]",
@@ -36,7 +42,12 @@ export function ProjectArt({ project, className }: { project: Project; className
       )}
     >
       {project.image ? (
-        <Photo src={project.image} alt={project.title} className="absolute inset-0" />
+        <Photo
+          src={project.image}
+          alt={project.title}
+          className="absolute inset-0"
+          imageClassName={imagePositions[project.imagePosition ?? "left-top"]}
+        />
       ) : (
         <div className="absolute inset-[13%] flex items-center justify-center">
           <div

@@ -8,9 +8,32 @@ export const currentlyEnjoying = [
   { label: "Building", value: "Analog Film Library" },
 ]
 
+// Polaroid in the scrapbook hero
+export const scrapbookHero = {
+  image: "/me/scrapbook-image1.jpg",
+  alt: "Chioma walking through a glowing orange slot canyon",
+  caption: "Antelope Canyon",
+}
+
+// "The world beyond the screen" travel section
 export const explorations = {
-  landscape: { image: undefined as string | undefined, caption: "Amalfi Coast, 2023" },
-  polaroid: { image: undefined as string | undefined, caption: "Morning walks in Lisbon" },
+  landscape: {
+    image: "/me/scrapbook-image3.jpg",
+    alt: "Chioma sitting on the rim of Horseshoe Bend at sunset",
+    caption: "Horseshoe Bend, Arizona",
+  },
+  polaroids: [
+    {
+      image: "/me/scrapbook-image2.jpg",
+      alt: "Chioma pointing toward the mountains on a desert trail lined with saguaro cacti",
+      caption: "Desert trails",
+    },
+    {
+      image: "/me/scrapbook-image4.jpg",
+      alt: "Chioma in a puffer jacket at a foggy mountain lookout",
+      caption: "Above the clouds",
+    },
+  ],
   note: "Traveling reminds me that systems are universal, but cultures are unique.",
 }
 

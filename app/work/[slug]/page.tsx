@@ -1,12 +1,14 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowRight } from "lucide-react"
 import { ImageReveal, Reveal, Stagger, StaggerItem } from "@/components/motion/reveal"
 import { Eyebrow, Script, Sparkle, Tag } from "@/components/site/bits"
 import { Photo } from "@/components/site/photo"
-import { ProjectArt } from "@/components/site/project-art"
+import { ProjectArt, imagePositions } from "@/components/site/project-art"
+import { diagrams } from "@/components/diagrams"
 import { caseStudies, getProject, projectMeta } from "@/content/projects"
 import { cn } from "@/lib/utils"
 
@@ -37,6 +39,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
   const cs = project.caseStudy
   const index = caseStudies.indexOf(project)
   const next = caseStudies[(index + 1) % caseStudies.length]
+  const Diagram = diagrams[project.slug]
   // Many decisions and no diagram → spread them across a full-width grid
   const wideDecisions =
     !!cs.architecture && !cs.architecture.diagram && cs.architecture.decisions.length > 3
@@ -63,12 +66,25 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
           )}
         </div>
         <ImageReveal delay={0.1} className="relative mt-14 border border-border bg-surface p-6 md:p-16">
-          {project.image ? (
+          {project.image && project.imageSize ? (
+            <Image
+              src={project.image}
+              alt={`${project.title} interface`}
+              width={project.imageSize.width}
+              height={project.imageSize.height}
+              priority
+              sizes="(min-width: 1440px) 1200px, 100vw"
+              className="h-auto w-full shadow-2xl shadow-ink/15"
+            />
+          ) : project.image ? (
             <Photo
               src={project.image}
               alt={`${project.title} interface`}
               priority
-              className="aspect-[16/8] shadow-2xl shadow-ink/15"
+              sizes="(min-width: 1440px) 1200px, 100vw"
+              className="aspect-[16/10] shadow-2xl shadow-ink/15"
+              imageClassName={imagePositions[project.imagePosition ?? "left-top"]}
+              zoom={false}
             />
           ) : (
             <ProjectArt project={project} className="border-0 shadow-2xl shadow-ink/10" />
@@ -145,6 +161,42 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
         </section>
       )}
 
+      {/* Gallery */}
+      {cs.gallery && (
+        <section className="border-t border-border px-6 py-24 md:px-24 md:py-32">
+          <div className="mx-auto max-w-6xl">
+            <Reveal>
+              <Eyebrow className="text-[10px]">{num()} / Screens</Eyebrow>
+              <h2 className="mt-5 font-serif text-4xl">{cs.gallery.heading}</h2>
+            </Reveal>
+            <div className="mt-14 grid items-start gap-x-10 gap-y-16 md:grid-cols-2">
+              {cs.gallery.items.map((shot, i) => (
+                <ImageReveal
+                  key={shot.src}
+                  delay={(i % 2) * 0.1}
+                  className={cn((shot.wide || shot.natural) && "md:col-span-2")}
+                >
+                  <figure
+                    className={cn(shot.natural && "mx-auto text-center")}
+                    style={shot.natural ? { maxWidth: shot.width / 1.5 } : undefined}
+                  >
+                    <Image
+                      src={shot.src}
+                      alt={shot.alt}
+                      width={shot.width}
+                      height={shot.height}
+                      sizes={shot.wide ? "(min-width: 1152px) 1152px, 100vw" : "(min-width: 768px) 50vw, 100vw"}
+                      className="h-auto w-full border border-border shadow-2xl shadow-ink/15"
+                    />
+                    <figcaption className="mt-4 font-script text-lg text-ink/70">{shot.caption}</figcaption>
+                  </figure>
+                </ImageReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Architecture */}
       {cs.architecture && (
         <section className="border-t border-border bg-surface px-6 py-24 md:px-24 md:py-32">
@@ -153,7 +205,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
               <Eyebrow className="text-[10px]">{num()} / Engineering</Eyebrow>
               <h2 className="mt-5 font-serif text-4xl">{cs.architecture.heading}</h2>
             </Reveal>
-            {wideDecisions ? (
+            {wideDecisions || Diagram ? (
               <>
                 {cs.architecture.tags && (
                   <div className="mt-6 flex flex-wrap gap-2">
@@ -162,7 +214,20 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
                     ))}
                   </div>
                 )}
-                <Stagger className="mt-14 grid gap-x-12 gap-y-12 border-t border-border pt-12 md:grid-cols-3">
+                {Diagram && (
+                  // Scrolls sideways on small screens so labels stay readable
+                  <ImageReveal className="mt-14 overflow-x-auto border border-border bg-background">
+                    <Diagram className="block w-full min-w-[720px] p-4 md:p-8" />
+                  </ImageReveal>
+                )}
+                <Stagger
+                  className={cn(
+                    "mt-14 grid gap-x-12 gap-y-12 border-t border-border pt-12",
+                    cs.architecture.decisions.length % 2 === 0 && cs.architecture.decisions.length < 6
+                      ? "md:grid-cols-2"
+                      : "md:grid-cols-3"
+                  )}
+                >
                   {cs.architecture.decisions.map((d) => (
                     <StaggerItem key={d.title}>
                       <h3 className="font-serif text-xl">{d.title}</h3>

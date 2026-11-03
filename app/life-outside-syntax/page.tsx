@@ -1,27 +1,21 @@
 import type { Metadata } from "next"
-import { Camera, Dumbbell, Plane, Users } from "lucide-react"
+import { Plane } from "lucide-react"
 import { ImageReveal, Reveal, Stagger, StaggerItem } from "@/components/motion/reveal"
 import { Eyebrow, Polaroid, Script, Sparkle } from "@/components/site/bits"
 import { Photo } from "@/components/site/photo"
-import {
-  closingQuote,
-  currentlyEnjoying,
-  explorations,
-  moments,
-  pleasureImages,
-  pleasures,
-} from "@/content/life"
-import { portraits } from "@/content/site"
+import { closingQuote, currentlyEnjoying, explorations, scrapbookHero } from "@/content/life"
 import { cn } from "@/lib/utils"
+// Hidden for now. To bring them back, uncomment this import and the two tags further down.
+// import { EverydayMoments, TactilePleasures } from "./hidden-sections"
 
 export const metadata: Metadata = {
   title: "Life Outside Syntax",
   description: "A personal scrapbook of travel, film, community, and everyday moments.",
 }
 
-const pleasureIcons = { camera: Camera, users: Users, dumbbell: Dumbbell }
-
 export default function LifePage() {
+  const [firstPolaroid, secondPolaroid] = explorations.polaroids
+
   return (
     <>
       {/* Hero */}
@@ -38,12 +32,13 @@ export default function LifePage() {
         <div className="relative flex justify-center md:justify-end">
           <Sparkle className="absolute -top-6 left-1/3 hidden size-4 fill-ink/30 md:block" />
           <ImageReveal delay={0.15}>
-            <Polaroid caption="Venice, Summer '24" className="w-72 rotate-3 md:w-80">
+            <Polaroid caption={scrapbookHero.caption} className="w-72 rotate-3 md:w-80">
               <Photo
-                src={portraits.scrapbook}
-                alt="Chioma in Venice at golden hour"
+                src={scrapbookHero.image}
+                alt={scrapbookHero.alt}
                 tone="warm"
                 priority
+                sizes="320px"
                 className="aspect-[4/5]"
               />
             </Polaroid>
@@ -79,98 +74,53 @@ export default function LifePage() {
           </div>
           <Script className="hidden text-base md:block">collecting stamps and memories</Script>
         </Reveal>
-        <div className="mt-12 grid gap-8 md:grid-cols-[2fr_1fr]">
-          <ImageReveal className="group relative aspect-[4/3] md:aspect-auto">
+        <div className="mt-12 grid gap-10 md:grid-cols-[2fr_1fr] md:gap-8">
+          <ImageReveal className="group relative aspect-[4/3]">
             <Photo
               src={explorations.landscape.image}
-              alt={explorations.landscape.caption}
-              tone="stone"
-              grayscale
+              alt={explorations.landscape.alt}
+              sizes="(min-width: 768px) 60vw, 100vw"
               className="absolute inset-0"
             />
             <span className="absolute bottom-5 left-5 bg-ink px-2.5 py-1 text-[9px] font-semibold tracking-[0.14em] text-surface uppercase">
               {explorations.landscape.caption}
             </span>
           </ImageReveal>
-          <div className="flex flex-col gap-8">
-            <ImageReveal delay={0.1} className="self-center md:self-auto">
-              <Polaroid caption={explorations.polaroid.caption} className="w-64 rotate-2 md:w-full">
-                <Photo src={explorations.polaroid.image} alt={explorations.polaroid.caption} tone="warm" className="aspect-square" />
+          {/* Two overlapping polaroids: side by side on phones, stacked collage from md up */}
+          <div className="relative flex justify-center gap-4 md:block">
+            <ImageReveal delay={0.1} className="w-1/2 md:absolute md:top-0 md:right-0 md:w-[78%]">
+              <Polaroid caption={firstPolaroid.caption} className="rotate-2">
+                <Photo
+                  src={firstPolaroid.image}
+                  alt={firstPolaroid.alt}
+                  tone="warm"
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                  className="aspect-square"
+                />
               </Polaroid>
             </ImageReveal>
-            <Reveal delay={0.2} className="hidden flex-1 flex-col items-center justify-center bg-blush-soft p-8 text-center md:flex">
-              <Plane className="size-4 text-wine" fill="currentColor" strokeWidth={1} />
-              <p className="mt-4 font-serif text-base leading-relaxed">{explorations.note}</p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Tactile pleasures */}
-      <section className="border-t border-border bg-surface px-6 py-24 md:px-24 md:py-28">
-        <div className="mx-auto grid max-w-[1440px] items-center gap-14 md:grid-cols-2 md:gap-20">
-          <Reveal>
-            <Eyebrow className="text-[10px]">Tactile Pleasures</Eyebrow>
-            <h2 className="mt-4 font-serif text-4xl leading-tight">
-              Creativity, Community, and
-              <br />
-              Calisthenics.
-            </h2>
-            <Stagger className="mt-10 space-y-8">
-              {pleasures.map((p) => {
-                const Icon = pleasureIcons[p.icon]
-                return (
-                  <StaggerItem key={p.title} className="flex gap-5">
-                    <Icon className="mt-1 size-4 shrink-0" strokeWidth={1.75} />
-                    <div>
-                      <h3 className="font-serif text-xl">{p.title}</h3>
-                      <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">{p.body}</p>
-                    </div>
-                  </StaggerItem>
-                )
-              })}
-            </Stagger>
-          </Reveal>
-          <div className="relative pb-16 md:pb-24">
-            <ImageReveal className="group aspect-[16/10]">
-              <Photo src={pleasureImages.main} alt="Vintage camera on a table" tone="warm" className="size-full" />
-            </ImageReveal>
-            <ImageReveal delay={0.15} className="absolute bottom-0 left-[-4%] w-[42%]">
-              <Polaroid className="-rotate-3">
-                <Photo src={pleasureImages.secondary} alt="Film camera with rolls" tone="warm" className="aspect-[4/3]" />
-              </Polaroid>
-            </ImageReveal>
-            <ImageReveal delay={0.25} className="absolute right-0 bottom-4 w-[38%]">
-              <Polaroid className="rotate-3">
-                <Photo src={pleasureImages.polaroid} alt="Mechanical keyboard" tone="cream" className="aspect-[4/3]" />
+            <ImageReveal delay={0.2} className="z-10 w-1/2 md:absolute md:bottom-0 md:left-0 md:w-[70%]">
+              <Polaroid caption={secondPolaroid.caption} className="-rotate-3">
+                <Photo
+                  src={secondPolaroid.image}
+                  alt={secondPolaroid.alt}
+                  tone="stone"
+                  sizes="(min-width: 768px) 22vw, 50vw"
+                  className="aspect-square"
+                />
               </Polaroid>
             </ImageReveal>
           </div>
         </div>
-      </section>
-
-      {/* Everyday moments */}
-      <section className="border-t border-border px-6 py-24 md:px-24 md:py-32">
-        <Reveal className="text-center">
-          <Eyebrow className="text-[10px]">The Diary</Eyebrow>
-          <h2 className="mt-4 font-serif text-4xl md:text-5xl">Everyday Moments.</h2>
+        <Reveal className="mx-auto mt-16 flex max-w-xl flex-col items-center text-center">
+          <Plane className="size-4 text-wine" fill="currentColor" strokeWidth={1} />
+          <p className="mt-4 font-serif text-lg leading-relaxed italic">{explorations.note}</p>
         </Reveal>
-        <div className="mx-auto mt-16 max-w-6xl space-y-20 md:space-y-28">
-          {moments.map((m, i) => (
-            <article key={m.title} className="grid items-center gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
-              <Reveal className={cn(i % 2 === 1 && "md:order-2")}>
-                <p className="text-[10px] tracking-[0.14em] text-muted-foreground uppercase">{m.date}</p>
-                <h3 className="mt-3 font-serif text-2xl">{m.title}</h3>
-                <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">{m.body}</p>
-                <Script className="mt-4 text-sm">{m.note}</Script>
-              </Reveal>
-              <ImageReveal delay={0.1} className={cn("group aspect-[16/10]", i % 2 === 1 && "md:order-1")}>
-                <Photo src={m.image} alt={m.title} tone="warm" className="size-full" />
-              </ImageReveal>
-            </article>
-          ))}
-        </div>
       </section>
+
+      {/* Tactile pleasures and The Diary are hidden for now (see hidden-sections.tsx) */}
+      {/* <TactilePleasures /> */}
+      {/* <EverydayMoments /> */}
 
       {/* Closing quote */}
       <section className="px-6 pb-28 text-center">

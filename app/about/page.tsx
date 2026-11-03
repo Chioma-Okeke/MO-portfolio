@@ -59,11 +59,12 @@ export default function AboutPage() {
         <ImageReveal className="relative min-h-[480px] md:min-h-0">
           <Photo
             src={portraits.about}
-            alt="Chioma in a silk blouse"
+            alt="Chioma in a charcoal blazer and headphones, smiling and glancing to the side"
             tone="stone"
             hint="Editorial portrait"
             priority
             zoom={false}
+            sizes="(min-width: 768px) 55vw, 100vw"
             className="absolute inset-0"
           />
           <p className="absolute bottom-5 left-5 font-script text-base text-surface/90">The Quiet Force.</p>
@@ -89,7 +90,7 @@ export default function AboutPage() {
       </section>
 
       {/* Engineer / Human */}
-      <section className="border-y border-border px-6 py-20 md:px-24 md:py-24">
+      {/* <section className="border-y border-border px-6 py-20 md:px-24 md:py-24">
         <Reveal className="mx-auto grid max-w-[1440px] border border-border md:grid-cols-2">
           <div className="p-8 md:p-14">
             <Eyebrow className="text-[10px]">The Engineer</Eyebrow>
@@ -106,7 +107,7 @@ export default function AboutPage() {
             </div>
           </div>
         </Reveal>
-      </section>
+      </section> */}
 
       {/* Principles */}
       <section className="bg-surface px-6 py-24 md:py-32">
@@ -174,24 +175,25 @@ export default function AboutPage() {
 
       {/* Collage */}
       <section className="bg-surface px-6 py-24 md:px-16">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-5 md:grid-cols-[1.6fr_1fr_1fr]">
-          <ImageReveal className="group col-span-2 aspect-[4/3] -rotate-1 md:col-span-1 md:row-span-2 md:aspect-auto">
-            <Photo src={aboutGallery.journal} alt="Fountain pen on a journal" tone="stone" grayscale className="size-full" />
-          </ImageReveal>
-          <ImageReveal delay={0.1} className="group aspect-[4/3] rotate-1">
-            <Photo src={aboutGallery.film} alt="Film rolls" tone="warm" className="size-full" />
-          </ImageReveal>
-          <ImageReveal
-            delay={0.2}
-            className="row-span-2 flex rotate-2 flex-col justify-end bg-blush p-6"
-          >
-            <Script className="text-sm">Tactile Moments</Script>
-            <p className="mt-2 font-serif text-xl leading-snug">The beauty of the physical world.</p>
-          </ImageReveal>
-          <ImageReveal delay={0.15} className="group aspect-[4/3]">
-            <Photo src={aboutGallery.desk} alt="Camera and coffee on a desk" tone="cream" className="size-full" />
-          </ImageReveal>
+        {/* Four portrait photos, gently tilted and staggered like prints on a table */}
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-5 md:grid-cols-4 md:gap-6">
+          {aboutGallery.photos.map((p, i) => (
+            <ImageReveal
+              key={p.image}
+              delay={i * 0.08}
+              className={cn(
+                "group aspect-[3/4] bg-background p-2 shadow-[0_18px_40px_-20px_rgba(31,29,29,0.35)] transition-transform duration-700 ease-soft hover:rotate-0",
+                ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2"][i % 4],
+                i % 2 === 1 && "md:mt-10"
+              )}
+            >
+              <Photo src={p.image} alt={p.alt} tone="warm" sizes="(min-width: 768px) 25vw, 50vw" className="size-full" />
+            </ImageReveal>
+          ))}
         </div>
+        <Reveal className="mt-12 text-center">
+          <Script className="text-xl">{aboutGallery.note}</Script>
+        </Reveal>
       </section>
 
       {/* Advisory */}

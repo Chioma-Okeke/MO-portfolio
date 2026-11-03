@@ -13,6 +13,20 @@ export type CaseStudy = {
   facts: { label: string; value: string }[]
   overview: { heading: string; pullQuote?: string; body: string[] }
   features?: { heading: string; items: { title: string; body: string }[] }
+  // Screenshots shown after the features. width/height are the file's pixel size.
+  gallery?: {
+    heading: string
+    // wide: spans both columns. natural: small image, centered at its own size (never stretched)
+    items: {
+      src: string
+      alt: string
+      caption: string
+      width: number
+      height: number
+      wide?: boolean
+      natural?: boolean
+    }[]
+  }
   techList?: string[] // full "Built with" list, shown after the features
   architecture?: {
     heading: string
@@ -41,6 +55,10 @@ export type Project = {
   stack: string[]
   icon?: "shirt" | "file-check" | "handshake" | "cpu" | "leaf" | "fingerprint" | "code"
   image?: string
+  // Which part of `image` stays visible when a card crops it (default "left-top")
+  imagePosition?: "left-top" | "right-top" | "top"
+  // The image's pixel size. When set, the case study shows it uncropped.
+  imageSize?: { width: number; height: number }
   imageTone?: "light" | "blush" | "dark"
   featured?: boolean
   link?: { label: string; href: string } // used when there is no case study
@@ -64,6 +82,8 @@ export const projects: Project[] = [
       "A full-stack inventory and operations platform centralizing customer, order, item-tracking, and business records across role-based workflows.",
     stack: ["Next.js", "TypeScript", "MongoDB"],
     icon: "shirt",
+    image: "/LaundryInventory/admin-dashboard.png",
+    imageSize: { width: 2878, height: 1460 },
     featured: true,
     caseStudy: {
       tagline: "Scale without the chaos.",
@@ -81,6 +101,33 @@ export const projects: Project[] = [
         body: [
           "Customer details, orders, item tracking, and business records were kept by hand, which made items hard to trace and slowed staff down at every step.",
           "The goal was a single, secure platform with RESTful services that centralized those records and gave staff and administrators the right tools for their role.",
+        ],
+      },
+      gallery: {
+        heading: "Inside the app",
+        items: [
+          {
+            src: "/LaundryInventory/login.png",
+            alt: "Internal Portal login screen asking for email and password",
+            caption: "Staff and admins sign in to a single internal portal.",
+            width: 2874,
+            height: 1466,
+          },
+          {
+            src: "/LaundryInventory/portal-selection.png",
+            alt: "Choose Your Portal screen with Admin Portal and Staff Portal options",
+            caption: "Admins choose which portal to enter; staff go straight to theirs.",
+            width: 2870,
+            height: 1468,
+          },
+          {
+            src: "/LaundryInventory/staff-dashboard.png",
+            alt: "Staff dashboard with Take new order and Print Receipts actions above a recent orders table",
+            caption: "Staff see only what they need: take orders and print receipts and item tags.",
+            width: 2874,
+            height: 1460,
+            wide: true,
+          },
         ],
       },
       architecture: {
@@ -177,6 +224,9 @@ export async function middleware(req: NextRequest) {
       "A Chrome extension that puts peer accountability and campus resources inside Canvas, pairing first-gen students with a partner, live check-ins and chat, and AI that points to the one ASU resource they need.",
     stack: ["Next.js", "Supabase", "Claude Haiku", "Chrome MV3"],
     icon: "handshake",
+    image: "/bridgeUp/onboarding-home.png",
+    imagePosition: "right-top",
+    imageSize: { width: 2846, height: 1626 },
     caseStudy: {
       tagline: "Nobody should have to figure it out alone.",
       facts: [
@@ -275,6 +325,19 @@ new MutationObserver(() => {
           "For schools: better retention and persistence among first-gen students, plus visibility into where students struggle. Success would show up as more students using resources, high check-in completion rates, and better term-to-term retention for students who used BridgeUp compared with those who didn't.",
         ],
       },
+      gallery: {
+        heading: "Inside Canvas",
+        items: [
+          {
+            src: "/bridgeUp/Buddy-match-up.png",
+            alt: "BridgeUp onboarding panel in Canvas asking which course the student is most nervous about and what they want to get better at",
+            caption: "Three low-stakes questions help match each student with the right partner.",
+            width: 2850,
+            height: 1630,
+            wide: true,
+          },
+        ],
+      },
       techList: [
         "TypeScript",
         "React 19",
@@ -325,6 +388,7 @@ new MutationObserver(() => {
       "A VS Code extension that finds inefficient Python, rewrites it to run faster, and shows how much time, memory, and CO₂ the change saves.",
     stack: ["Python", "TypeScript", "VS Code", "CodeCarbon"],
     icon: "leaf",
+    image: "/carbonLint/demo.png",
     featured: true,
     caseStudy: {
       tagline: "Make the hidden cost visible.",
@@ -365,11 +429,46 @@ new MutationObserver(() => {
           },
           {
             title: "Struggle detector",
-            body: "Rapid repeated saves trigger an “AI retry loop” warning, flagging when a developer may be stuck regenerating code.",
+            body: "Rapid repeated edits to the same code trigger an “AI retry loop” warning, flagging when an AI assistant may be stuck, and suggest adding the Workspace Context MCP so it has more to work with.",
           },
           {
             title: "MCP server",
             body: "AI coding assistants such as Kiro can call the same analysis and optimization tools directly.",
+          },
+        ],
+      },
+      gallery: {
+        heading: "In action",
+        items: [
+          {
+            src: "/carbonLint/proble-description.png",
+            alt: "CarbonLint hover tooltip in VS Code explaining a nested loop and suggesting a fix",
+            caption: "Hover over an underline to see the problem and a suggested fix.",
+            width: 1776,
+            height: 856,
+            wide: true,
+          },
+          {
+            src: "/carbonLint/report-home.png",
+            alt: "Carbon Optimizer report panel ready to analyze demo.py",
+            caption: "One click profiles the file and generates an optimized version.",
+            width: 1160,
+            height: 1340,
+          },
+          {
+            src: "/carbonLint/report-details.png",
+            alt: "Carbon Optimizer report showing run time, memory, energy, and CO2, with the rewritten code",
+            caption: "Measured time, memory, energy, and CO₂, plus the rewrite ready to apply.",
+            width: 1152,
+            height: 1518,
+          },
+          {
+            src: "/carbonLint/simulated-ai-loop.png",
+            alt: "Carbon Optimizer notification warning of repeated edits in the same code region and suggesting the Workspace Context MCP",
+            caption: "The struggle detector spots repeated edits to the same code and suggests giving the AI more context.",
+            width: 776,
+            height: 204,
+            natural: true,
           },
         ],
       },

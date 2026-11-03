@@ -29,6 +29,6 @@ export const portraits = {
   hero: undefined as string | undefined, // home hero
   heroCaption: "Tempe, Arizona", // handwritten note on the home hero photo
   person: undefined as string | undefined, // home "The Person" B&W portrait
-  about: undefined as string | undefined, // about hero - "The Quiet Force"
-  scrapbook: undefined as string | undefined, // scrapbook polaroid - "Venice, Summer '24"
+  about: "/me/about-hero.png" as string | undefined, // about hero - "The Quiet Force"
+  contact: "/me/contact-page.jpg" as string | undefined, // contact page hero card
 }

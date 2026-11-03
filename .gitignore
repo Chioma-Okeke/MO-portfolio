@@ -40,3 +40,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# personal photos and project screenshots (kept local, not committed)
+/public/me/
+/public/LaundryInventory/
+/public/bridgeUp/
+/public/carbonLint/
+
+.vercel
+.env*

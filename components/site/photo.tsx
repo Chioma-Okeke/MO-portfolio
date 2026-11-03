@@ -22,6 +22,8 @@ type PhotoProps = {
   sizes?: string
   grayscale?: boolean
   zoom?: boolean
+  /** Extra classes for the <img>, e.g. "object-left-top" for screenshots */
+  imageClassName?: string
 }
 
 /**
@@ -38,6 +40,7 @@ export function Photo({
   sizes = "(min-width: 1024px) 50vw, 100vw",
   grayscale,
   zoom = true,
+  imageClassName,
 }: PhotoProps) {
   return (
     <div className={cn("relative overflow-hidden", !src && tones[tone], className)}>
@@ -51,7 +54,8 @@ export function Photo({
           className={cn(
             "object-cover",
             grayscale && "grayscale",
-            zoom && "transition-transform duration-[1400ms] ease-soft group-hover:scale-[1.03]"
+            zoom && "transition-transform duration-1400 ease-soft group-hover:scale-[1.03]",
+            imageClassName
           )}
         />
       ) : (

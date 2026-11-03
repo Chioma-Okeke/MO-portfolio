@@ -1,0 +1,13 @@
+# Files that stay on this machine when deploying with `vercel --prod`.
+# Note: the Vercel CLI ignores .gitignore, so the git-ignored photos in /public still get deployed.
+
+# Private documents and design mockups
+resumes
+designs
+
+# Uncompressed originals; the site uses the .jpg copies next to them
+public/me/*.png
+!public/me/about-hero.png
+
+# Local secrets (production uses the env vars set in the Vercel dashboard)
+.env*.local

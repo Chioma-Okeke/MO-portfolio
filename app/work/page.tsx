@@ -4,6 +4,11 @@ import { buttonVariants } from "@/components/ui/button"
 import { Reveal } from "@/components/motion/reveal"
 import { Eyebrow } from "@/components/site/bits"
 import { projects } from "@/content/projects"
+
+// Work page lists projects A to Z by title, regardless of their order in the data file
+const sortedProjects = [...projects].sort((a, b) =>
+  a.title.localeCompare(b.title, "en", { sensitivity: "base" })
+)
 import { WorkList } from "./work-list"
 
 export const metadata: Metadata = {
@@ -31,7 +36,7 @@ export default function WorkPage() {
         </Reveal>
       </section>
 
-      <WorkList projects={projects} />
+      <WorkList projects={sortedProjects} />
 
       <section className="border-t border-border px-6 py-20 md:py-28">
         <Reveal className="mx-auto flex max-w-[1440px] flex-col items-center gap-8 text-center md:flex-row md:justify-between md:px-18 md:text-left">
