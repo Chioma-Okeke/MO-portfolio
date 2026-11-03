@@ -41,14 +41,17 @@ export default function Home() {
         <ImageReveal className="relative min-h-115 md:min-h-0">
           <Photo
             src={portraits.hero}
-            alt="Portrait of Chioma"
+            alt="Chioma standing in a glowing orange slot canyon"
             tone="stone"
             hint="Hero portrait"
             priority
             zoom={false}
+            sizes="(min-width: 768px) 45vw, 100vw"
             className="absolute inset-0"
           />
-          <p className="absolute top-6 right-6 font-script text-lg text-ink/70">{portraits.heroCaption}</p>
+          <p className="absolute top-6 right-6 font-script text-lg text-surface drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
+            {portraits.heroCaption}
+          </p>
         </ImageReveal>
       </section>
 
@@ -120,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* The person */}
-      <section className="bg-surface px-6 py-24 md:py-32">
+      {/* <section className="bg-surface px-6 py-24 md:py-32">
         <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[1fr_1.4fr] md:gap-20">
           <ImageReveal className="relative mx-auto w-full max-w-sm">
             <Photo
@@ -154,10 +157,10 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </section> */}
 
       {/* Off the clock */}
-      <section className="mx-auto max-w-6xl px-6 py-24 md:py-32">
+      {/* <section className="mx-auto max-w-6xl px-6 py-24 md:py-32">
         <Reveal className="text-center">
           <h2 className="font-serif text-4xl italic">Off the clock</h2>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -195,10 +198,10 @@ export default function Home() {
           <Script className="text-ink/80">balancing the digital with the tactile</Script>
           <Sparkle className="size-3" />
         </Reveal>
-      </section>
+      </section> */}
 
       {/* Journal */}
-      <section className="border-t border-border px-6 py-24 md:py-32">
+      {/* <section className="border-t border-border px-6 py-24 md:py-32">
         <div className="mx-auto max-w-[1440px] md:px-18">
           <Reveal className="flex items-end justify-between">
             <div>
@@ -243,7 +246,7 @@ export default function Home() {
             View all notes
           </Link>
         </div>
-      </section>
+      </section> */}
     </>
   )
 }

@@ -23,9 +23,33 @@ const caveat = Caveat({
   subsets: ["latin"],
 })
 
+// Vercel sets this to the production domain at build time; fall back to local dev
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000"
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: { default: site.title, template: `%s - ${site.name}` },
   description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.socials.find((s) => s.label === "LinkedIn")?.href }],
+  creator: site.name,
+  keywords: site.keywords,
+  // How the site looks when the link is shared on LinkedIn, Slack, iMessage, etc.
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary", // switch to "summary_large_image" once a share image exists
+    title: site.title,
+    description: site.description,
+  },
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -5,9 +5,17 @@
 resumes
 designs
 
-# Uncompressed originals; the site uses the .jpg copies next to them
-public/me/*.png
-!public/me/about-hero.png
+# Uncompressed originals; the site uses the .jpg copies next to them.
+# Listed one by one so any new photo you add is deployed by default.
+public/me/contact-page.png
+public/me/scrapbook-image1.png
+public/me/scrapbook-image2.png
+public/me/scrapbook-image3.png
+public/me/scrapbook-image4.png
+public/me/about-scrap1.png
+public/me/about-scrap2.png
+public/me/about-scrap3.png
+public/me/about-scrap4.png
 
 # Local secrets (production uses the env vars set in the Vercel dashboard)
 .env*.local

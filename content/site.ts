@@ -2,9 +2,25 @@
 
 export const site = {
   name: "Chioma Okeke",
-  title: "Chioma Okeke - Engineer, Builder, Curious Human",
+  // Browser tab, search results, and link previews
+  title: "Chioma Okeke - Software Engineer & Cybersecurity",
+  // Kept under ~160 characters so search engines don't cut it off
   description:
-    "Software engineer and M.S. Computer Science student at Arizona State University, focused on cybersecurity.",
+    "Chioma Okeke is a software engineer and ASU computer science grad student focused on cybersecurity and building secure, human-centered software.",
+  keywords: [
+    "Chioma Okeke",
+    "software engineer",
+    "cybersecurity",
+    "application security",
+    "LLM security",
+    "prompt injection",
+    "full-stack developer",
+    "Next.js",
+    "TypeScript",
+    "Python",
+    "Arizona State University",
+    "Mastercard Foundation Scholar",
+  ],
   email: "okekegeraldenne@gmail.com",
   location: "Tempe, AZ / Open to Remote",
   socials: [
@@ -26,8 +42,8 @@ export const nav = [
  * Any image left undefined renders as a soft placeholder until you add one.
  */
 export const portraits = {
-  hero: undefined as string | undefined, // home hero
-  heroCaption: "Tempe, Arizona", // handwritten note on the home hero photo
+  hero: "/me/home-hero.png" as string | undefined, // home hero
+  heroCaption: "Antelope Canyon, Arizona", // handwritten note on the home hero photo
   person: undefined as string | undefined, // home "The Person" B&W portrait
   about: "/me/about-hero.png" as string | undefined, // about hero - "The Quiet Force"
   contact: "/me/contact-page.jpg" as string | undefined, // contact page hero card
