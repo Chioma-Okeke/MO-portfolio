@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: {
-    card: "summary", // switch to "summary_large_image" once a share image exists
+    card: "summary_large_image", // uses the share image from app/opengraph-image.tsx
     title: site.title,
     description: site.description,
   },
