@@ -49,9 +49,11 @@ function TexturedDisc({ className }: { className?: string }) {
   )
 }
 
-// One line per name, each stepping further right (0, 0.75em, 1.5em) like a cascade
-const nameLines = site.name.split(" ")
-const indents = ["pl-0", "pl-[0.75em]", "pl-[1.5em]"]
+// The hero shows just first name and surname (middle names are left out):
+// first name on top, surname stepped in to the right
+const names = site.name.split(" ")
+const nameLines = [names[0], names.at(-1)!]
+const indents = ["pl-0", "pl-[0.9em] md:pl-[1.15em]"]
 
 export default function Home() {
   return (
@@ -79,9 +81,9 @@ export default function Home() {
         <TexturedDisc className="size-full" />
       </ImageReveal>
 
-      {/* Name, cascading down onto the disc - the last line overlaps its top edge */}
+      {/* Name, staggered across the top of the disc - the surname overlaps its top edge */}
       <h1
-        className="absolute bottom-[calc(4.4%+var(--d)*0.68)] left-[6vw] font-serif text-[15vw] leading-[0.88] font-medium tracking-tight text-ink md:left-[calc(50%-var(--d)*0.6)] md:text-[calc(var(--d)*0.27)]"
+        className="absolute bottom-[calc(4.4%+var(--d)*0.68)] left-[6vw] font-serif text-[17vw] leading-[0.88] font-medium tracking-tight text-ink md:left-[calc(50%-var(--d)*0.65)] md:text-[calc(var(--d)*0.32)]"
       >
         {nameLines.map((line, i) => (
           <Reveal key={line} onLoad delay={i * 0.12} className={`block ${indents[i] ?? indents.at(-1)}`}>
