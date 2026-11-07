@@ -14,7 +14,13 @@ export function Header() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b",
+        // On the home page the header melts into the hero's background
+        pathname === "/" ? "border-transparent bg-blush" : "border-border bg-background/90 backdrop-blur-md"
+      )}
+    >
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6 md:h-20 md:px-16">
         <Link href="/" className="font-serif text-xl tracking-tight md:text-2xl">
           {site.name}

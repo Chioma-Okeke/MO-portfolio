@@ -17,12 +17,20 @@ type RevealProps = {
 }
 
 /** Fades + lifts its children in once they scroll into view. */
-export function Reveal({ children, className, delay = 0, y = 18 }: RevealProps) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  y = 18,
+  onLoad = false,
+}: RevealProps & { onLoad?: boolean }) {
+  const shown = { opacity: 1, y: 0 }
   return (
     <motion.div
       className={className}
       initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
+      // onLoad: animate straight away (above-the-fold content near the viewport edge)
+      {...(onLoad ? { animate: shown } : { whileInView: shown })}
       viewport={{ once: true, margin: "0px 0px -60px 0px" }}
       transition={{ duration: 0.9, ease, delay }}
     >

@@ -8,9 +8,9 @@
 import { ImageResponse } from "next/og"
 import { readFile } from "node:fs/promises"
 import { join } from "node:path"
-import { site } from "@/content/site"
+import { portraits, site } from "@/content/site"
 
-export const alt = `${site.name}, software engineer focused on cybersecurity`
+export const alt = `${site.name}, product manager building AI and e-commerce products`
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -24,11 +24,14 @@ const colors = {
 
 const font = (file: string) => readFile(join(process.cwd(), "assets/fonts", file))
 
-// The photo is git-ignored, so fall back to a plain panel if it isn't on disk
+// Uses the home hero photo. It's git-ignored, so fall back to a plain panel if
+// it isn't set or isn't on disk.
 async function loadPhoto() {
+  if (!portraits.hero) return null
   try {
-    const png = await readFile(join(process.cwd(), "public/me/home-hero.png"))
-    return `data:image/png;base64,${png.toString("base64")}`
+    const file = await readFile(join(process.cwd(), "public", portraits.hero))
+    const type = /\.jpe?g$/i.test(portraits.hero) ? "jpeg" : "png"
+    return `data:image/${type};base64,${file.toString("base64")}`
   } catch {
     return null
   }
@@ -65,12 +68,12 @@ export default async function Image() {
               color: colors.muted,
             }}
           >
-            ENGINEER · BUILDER · CURIOUS HUMAN
+            PRODUCT MANAGER · BUILDER · LAWYER
           </div>
           <div
             style={{
               fontFamily: "Cormorant",
-              fontSize: 112,
+              fontSize: 80,
               lineHeight: 1,
               color: colors.ink,
               marginTop: 28,
@@ -80,7 +83,7 @@ export default async function Image() {
             {site.name}
           </div>
           <div style={{ fontFamily: "Cormorant", fontSize: 40, color: colors.ink, marginTop: 18 }}>
-            Software Engineer &amp; Cybersecurity
+            AI &amp; E-commerce Products
           </div>
           <div style={{ width: 72, height: 2, background: colors.wine, marginTop: 36 }} />
           <div
@@ -92,10 +95,10 @@ export default async function Image() {
               marginTop: 28,
             }}
           >
-            M.S. Computer Science, Arizona State University
+            Lawyer-turned product manager · Ottawa, Canada
           </div>
           <div style={{ fontFamily: "Caveat", fontSize: 34, color: colors.wine, marginTop: 30 }}>
-            more than the code :)
+            useful, and safe to use :)
           </div>
         </div>
 

@@ -1,158 +1,155 @@
 // Everything on the About page, plus the home page stats and bio teaser.
 
 export const stats = [
-    { label: "Focus", value: "Secured Software Engineering" },
-    { label: "Experience", value: "2 Years, 8 Months" },
-    { label: "Studying", value: "M.S. CS, ASU" },
-    { label: "Philosophy", value: "Quiet Power" },
+    { label: "Focus", value: "AI & E-commerce Products" },
+    { label: "Background", value: "Law → Product" },
+    { label: "Based In", value: "Ottawa, Canada" },
+    { label: "Building", value: "ClaimCheck" },
 ];
 
 export const intro = {
     heading:
-        "A Software Engineer with a designer's eye and a security-first mindset.",
-    quote: "I've always believed that technology should be as elegant as it is robust. Studying security has taught me that the most secure systems are the ones that respect the human at the center.",
+        "A product manager with a lawyer's eye for risk and a creator's feel for what people actually click.",
+    quote: "I build products that are useful and safe to use. Legal training taught me to read the fine print; product work taught me to make sure people never have to.",
     body: [
-        "I spent 2 years and 8 months as a software engineer building healthcare software at Cavista Technologies, shipping features in TypeScript and helping trace production failures through Kibana and the codebase.",
-        "Today I'm pursuing an M.S. in Computer Science at Arizona State University as a Mastercard Foundation Scholar, focused on cybersecurity and understanding how security really works, from web exploitation and binary analysis to threat hunting and incident response. Alongside my studies, I build AI-assisted code review tooling at EdPlus that brings security checks into everyday developer workflows.",
-        "I call my philosophy “Soft Power”, the ability to drive impact through precision, reliability, and an understated presence that prioritizes the solution over the spotlight.",
+        "I started my career in law. As Head of Contract and Insurance at Lekki Gardens Real Estate, I redesigned the letter-of-award workflow and cut contract turnaround time by 40%. That was my first product: a broken process, a clear problem, and a better way through it.",
+        "Since then I've moved fully into product. I led delivery of Syncventory, a multi-store inventory and POS platform, as a volunteer PM at Nugi Technologies, and I was one of 450 finalists out of 12,362 interns in HNG's 10-stage elimination internship, shipping products with engineers, designers, DevOps and marketers.",
+        "Alongside that, I partner with e-commerce brands, including Shopify merchants, as a creator with 29K followers on Instagram. That's where ClaimCheck came from: an AI tool that helps small merchants catch risky marketing claims before they publish.",
     ],
 };
 
 // Short version used on the home page
 export const personTeaser = {
-    heading: "Engineering a life of “Soft Power”.",
+    heading: "Building products people can trust.",
     body: [
-        "I believe that the most robust systems aren't just built with code; they're built with empathy, curiosity, and a deep understanding of the human element. My approach to software and security is rooted in “Soft Power”: the ability to influence through excellence, elegance, and understated authority.",
-        "When I'm not building software or working through a CTF challenge, you'll find me exploring the intersection of design and data, or finding the perfect light for a film photograph.",
+        "I believe the best products are the ones people never have to second-guess. My approach blends legal training, hands-on product delivery, and first-hand experience of what drives clicks, trust and purchases in social commerce.",
+        "When I'm not writing PRDs or testing prompts, you'll find me creating content and partnering with the brands my followers love.",
     ],
 };
 
 export const engineer = {
-    heading: "Architecting for Resilience.",
+    heading: "Shipping with Clarity.",
     items: [
         {
-            title: "Security as Foundation",
-            body: "I treat security not as a feature to be added, but as the bedrock upon which every line of code is written.",
+            title: "Problem First",
+            body: "Every feature starts with a clearly defined problem, real user research, and a reason it matters now.",
         },
         {
-            title: "Full-Stack Fluency",
-            body: "TypeScript, React and Next.js on the front; Node.js, FastAPI, PostgreSQL and MongoDB behind it.",
+            title: "Clear Requirements",
+            body: "PRDs, user stories and acceptance criteria that engineers, designers and QA can build and test against.",
         },
         {
-            title: "Security That Helps",
-            body: "Good security should be invisible. I build review automation that flags risk early without slowing developers down.",
+            title: "Safe by Design",
+            body: "Trust guardrails, QA/UAT scenarios and test suites, so products behave the way people expect.",
         },
     ],
 };
 
-// Personal details - these came from the design copy, edit freely
 export const human = {
     heading: "Living with Intention.",
     items: [
         {
-            title: "Analog Collector",
-            body: "I find balance in the tactile, like film photography, fountain pens, and the texture of heavy-weight paper.",
+            title: "Creator",
+            body: "I share and partner with brands on Instagram, where 29K people follow along.",
         },
         {
             title: "Constant Student",
-            body: "Whether it's a new security tool or a new hobby, my curiosity never rests.",
+            body: "From health and social care to AI literacy, my curiosity never rests.",
         },
         {
-            title: "Quiet Advocate",
-            body: "I'm passionate about mentorship and creating space for underrepresented voices in tech.",
+            title: "Community Builder",
+            body: "As Chamber Head in law school, I ran 40+ moot court trials and debates.",
         },
     ],
-    currently:
-        "Training as a junior web app pentester and working through pwn.college challenges.",
+    currently: "Validating ClaimCheck with Shopify merchants from my creator network.",
 };
 
 export const principles = [
     {
-        title: "Quiet Excellence",
-        body: "The work should speak for itself. I prioritize depth over noise, focusing on outcomes that leave a lasting, silent impact on the system's integrity.",
+        title: "Useful and Safe",
+        body: "A product has to solve a real problem, and it has to be safe to use. I won't trade one for the other.",
     },
     {
-        title: "Human-First Security",
-        body: "Technology serves people. I design with user privacy and accessibility in mind, ensuring safety doesn't come at the cost of dignity.",
+        title: "Plain Language",
+        body: "Whether it's a risk explanation or a requirement, if people can't understand it, it hasn't done its job.",
     },
     {
-        title: "Endless Curiosity",
-        body: "The landscape is always shifting. I remain an active student of both the craft and the world, constantly refining my perspective through diverse inputs.",
+        title: "Close to the User",
+        body: "I learn from the people I build for, from merchants and creators to the teams shipping alongside me.",
     },
 ];
 
 // Experience timeline - newest first
 export const experience = [
     {
-        period: "2025 - May 2027",
-        role: "M.S. Computer Science, Arizona State University",
-        body: "Mastercard Foundation Scholar focused on cybersecurity. Coursework includes Advanced Operating Systems and Software Security.",
+        period: "Nov 2026 - Present",
+        role: "Founder and Builder, ClaimCheck",
+        body: "Built and shipped an AI web app that flags risky claims in product listings and influencer captions, explains each risk in plain language, and suggests compliant rewrites. Now validating with Shopify merchants.",
         current: true,
     },
     {
-        period: "2025 - Present",
-        role: "Software Development Assistant, EdPlus at ASU",
-        body: "Building an AI-assisted Salesforce code review workflow with seven quality and security gates, integrated into Bitbucket pull requests. Expanded Apex test optimization to ~60% of the suite, raising coverage to 85%.",
+        period: "Ongoing",
+        role: "Content Creator and Brand Partner",
+        body: "Partner with e-commerce brands, including Shopify merchants, on sponsored Instagram campaigns for 29K followers, promoting exclusive discount codes (up to 20% off) that turned followers into paying customers.",
         current: true,
     },
     {
-        period: "2023 - 2025",
-        role: "Software Engineer I, Cavista Technologies",
-        body: "Built healthcare software in Aurelia and TypeScript: a form-to-model workflow for print-ready clinical documents and a permissions feature surfacing mobile-access impact. Cut production investigation time by 35% using Kibana.",
+        period: "Oct - Dec 2025",
+        role: "Product Manager Intern, HNG Internship",
+        body: "One of 450 finalists from 12,362 interns (top 4%). Defined requirements for Zedu, an AI learning platform, and took ContentQ, a creator productivity app, from idea to launch in 8 weeks.",
     },
     {
-        period: "Class of 2022",
-        role: "B.Eng. Computer Engineering, Covenant University",
-        body: "Graduated with a 4.67/5.0 CGPA. Coursework included Neural Networks and Data Structures & Algorithms.",
+        period: "Jan - Aug 2025",
+        role: "Product Manager (Volunteer), Nugi Technologies",
+        body: "Led product delivery for Syncventory, a multi-store inventory and POS platform: PRDs, user stories, acceptance criteria, backlog planning, and QA/UAT with engineering, design and data teams.",
+    },
+    {
+        period: "2022 - 2023",
+        role: "MSc Health and Social Care, University of Wolverhampton",
+        body: "Postgraduate study in the UK.",
+    },
+    {
+        period: "2021 - 2022",
+        role: "Head of Contract and Insurance, Lekki Gardens Real Estate",
+        body: "Redesigned the letter-of-award workflow, cutting contract turnaround time by 40%, and introduced a contract review checklist that reduced drafting errors and strengthened legal compliance.",
+    },
+    {
+        period: "2014 - 2021",
+        role: "LL.B. Law, Anambra State University & B.L., Nigerian Law School",
+        body: "Called to the Nigerian Bar in 2021. As Chamber Head of the Law Faculty, ran 40+ moot court trials and debate events averaging 150 attendees.",
     },
 ];
 
-// Hands-on security training - shown under the timeline
+// Certifications - shown under the timeline
 export const training = [
     {
-        period: "Oct 2026 - Present",
-        title: "WiCyS × Just Hacking",
-        body: "Web app pentesting, Jr Analyst track: reconnaissance, attack-surface mapping, authentication and session security.",
+        period: "2026",
+        title: "AI Literacy for Legal Professionals",
+        body: "Harvey, Level 1: Foundations. AI risk, data privacy, and prompting.",
     },
     {
-        period: "Feb - Apr 2026",
-        title: "CodePath Blue Team",
-        body: "Intrusion detection with Snort, threat hunting on SolarWinds and Scattered Spider, and NIST incident response.",
+        period: "2024",
+        title: "Product Management Certification",
+        body: "Product School. Capstone: tiered hospitality bundles and three product features.",
     },
     {
-        period: "Jan 2026 - Present",
-        title: "ASU CTFs, pwn.college, Tracer FIRE",
-        body: "Web exploitation, binary analysis with GDB and Ghidra, and digital forensics with Velociraptor and Elastic.",
+        period: "Toolkit",
+        title: "How I Work",
+        body: "ClickUp, Jira, Notion, Confluence, Figma, GitHub and Vercel; v0, Claude, ChatGPT, Gemini and Lovable for building.",
     },
 ];
 
 export const advisory = {
     eyebrow: "The Next Chapter",
-    heading: "Security & Impact",
-    lead: "My vision for the future is one where technology is not a black box, but a transparent tool for human flourishing. I'm deepening my security practice so the software I build is safe by design, not by afterthought.",
-    body: "I'm open to security engineering, application security, and software engineering opportunities, and always happy to talk research.",
+    heading: "Products & Trust",
+    lead: "I want to build products that small businesses and everyday people can rely on, where AI makes work easier without making it riskier.",
+    body: "I'm open to product management roles, especially in AI, e-commerce, and legal or compliance tech, and always happy to talk products.",
     cta: "Let's talk",
 };
 
-// Photos for the about-page scrapbook collage, shown left to right
+// Photos for the about-page scrapbook collage, shown left to right.
+// The section is hidden while this list is empty.
 export const aboutGallery = {
-    note: "The beauty of the physical world.",
-    photos: [
-        {
-            image: "/me/about-scrap1.jpg",
-            alt: "Chioma looking out over city lights at dusk from a hilltop railing",
-        },
-        {
-            image: "/me/about-scrap2.jpg",
-            alt: "Chioma taking a selfie in glasses and a fuzzy jacket in front of a lit-up carousel",
-        },
-        {
-            image: "/me/about-scrap3.jpg",
-            alt: "Chioma standing on a boat deck by an American flag with a lake and mountains behind her",
-        },
-        {
-            image: "/me/about-scrap4.jpg",
-            alt: "Chioma taking a mirror photo in a gym lined with dumbbell racks",
-        },
-    ],
+    note: "",
+    photos: [] as { image: string; alt: string }[],
 };

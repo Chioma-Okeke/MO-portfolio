@@ -5,8 +5,9 @@ import { site } from "@/content/site"
 import { Reveal } from "@/components/motion/reveal"
 
 export function FooterCta() {
-  // The contact page already *is* the "say hello" CTA
-  if (usePathname() === "/contact") return null
+  // The contact page already *is* the "say hello" CTA, and the home page is a single hero
+  const pathname = usePathname()
+  if (pathname === "/contact" || pathname === "/") return null
 
   return (
     <section className="relative overflow-hidden bg-ink px-6 py-28 text-center text-surface md:py-36">

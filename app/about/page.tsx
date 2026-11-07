@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Engineering a life of soft power, the engineer and the human.",
+  description: "A lawyer-turned product manager building products that are useful and safe to use.",
 }
 
 function NumberedList({ items }: { items: { title: string; body: string }[] }) {
@@ -46,20 +46,21 @@ export default function AboutPage() {
           <Reveal>
             <Eyebrow>Editorial Bio</Eyebrow>
             <h1 className="mt-6 font-serif text-6xl leading-[0.98] font-medium tracking-tight md:text-7xl">
-              Engineering
-              <br />a life of
+              From the
               <br />
-              Soft Power.
+              courtroom
+              <br />
+              to product.
             </h1>
           </Reveal>
           <Reveal delay={0.3}>
-            <Script className="mt-10 -rotate-3 text-xl">Professional first, personal always.</Script>
+            <Script className="mt-10 -rotate-3 text-xl">Useful, and safe to use.</Script>
           </Reveal>
         </div>
         <ImageReveal className="relative min-h-[480px] md:min-h-0">
           <Photo
             src={portraits.about}
-            alt="Chioma in a charcoal blazer and headphones, smiling and glancing to the side"
+            alt="Portrait of Chisom Monica Onuorah"
             tone="stone"
             hint="Editorial portrait"
             priority
@@ -67,7 +68,7 @@ export default function AboutPage() {
             sizes="(min-width: 768px) 55vw, 100vw"
             className="absolute inset-0"
           />
-          <p className="absolute bottom-5 left-5 font-script text-base text-surface/90">The Quiet Force.</p>
+          <p className="absolute bottom-5 left-5 font-script text-base text-surface/90">Read the fine print.</p>
         </ImageReveal>
       </section>
 
@@ -159,7 +160,7 @@ export default function AboutPage() {
           </ol>
 
           <Reveal className="mt-24">
-            <Eyebrow className="text-[10px]">Security Training &amp; Hands-On Practice</Eyebrow>
+            <Eyebrow className="text-[10px]">Certifications &amp; Toolkit</Eyebrow>
           </Reveal>
           <Stagger className="mt-8 grid gap-10 border-t border-border pt-10 md:grid-cols-3 md:gap-12">
             {training.map((t) => (
@@ -173,7 +174,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Collage */}
+      {/* Collage - hidden until photos are added in content/about.ts */}
+      {aboutGallery.photos.length > 0 && (
       <section className="bg-surface px-6 py-24 md:px-16">
         {/* Four portrait photos, gently tilted and staggered like prints on a table */}
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-5 md:grid-cols-4 md:gap-6">
@@ -195,6 +197,7 @@ export default function AboutPage() {
           <Script className="text-xl">{aboutGallery.note}</Script>
         </Reveal>
       </section>
+      )}
 
       {/* Advisory */}
       <section className="bg-blush-soft px-6 py-24 text-center md:py-32">

@@ -13,7 +13,7 @@ import { WorkList } from "./work-list"
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Engineering projects, security research, and digital experiments.",
+  description: "AI products, product management work, and lessons from law and social commerce.",
 }
 
 export default function WorkPage() {
@@ -30,8 +30,8 @@ export default function WorkPage() {
         </Reveal>
         <Reveal delay={0.15}>
           <p className="mx-auto mt-8 max-w-xl font-serif text-lg leading-relaxed text-muted-foreground italic">
-            &ldquo;A selection of engineering projects, security research, and digital experiments focused on
-            resilience, clarity, and the human element.&rdquo;
+            &ldquo;A selection of AI products and product work, shaped by law and social commerce, and focused on
+            building things people can trust.&rdquo;
           </p>
         </Reveal>
       </section>
@@ -47,8 +47,8 @@ export default function WorkPage() {
               in mind?
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              I&apos;m always open to discussing security and software engineering roles, or research
-              collaborations focused on building systems people can trust.
+              I&apos;m always open to discussing product management roles, or collaborations on AI and
+              e-commerce products that people can trust.
             </p>
           </div>
           <Link href="/contact" className={buttonVariants({ size: "cta" })}>

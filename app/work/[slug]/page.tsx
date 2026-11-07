@@ -5,7 +5,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowRight } from "lucide-react"
 import { ImageReveal, Reveal, Stagger, StaggerItem } from "@/components/motion/reveal"
-import { Eyebrow, Script, Sparkle, Tag } from "@/components/site/bits"
+import { ArrowLink, Eyebrow, Script, Sparkle, Tag } from "@/components/site/bits"
 import { Photo } from "@/components/site/photo"
 import { ProjectArt, imagePositions } from "@/components/site/project-art"
 import { diagrams } from "@/components/diagrams"
@@ -58,6 +58,11 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
             <h1 className="mt-5 max-w-4xl font-serif text-5xl leading-[1.02] font-medium tracking-tight md:text-7xl">
               {project.title}
             </h1>
+            {project.link && (
+              <ArrowLink href={project.link.href} className="mt-6">
+                {project.link.label}
+              </ArrowLink>
+            )}
           </Reveal>
           {cs.tagline && (
             <Reveal delay={0.3} className="hidden shrink-0 md:block">
@@ -202,7 +207,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
         <section className="border-t border-border bg-surface px-6 py-24 md:px-24 md:py-32">
           <div className="mx-auto max-w-[1440px]">
             <Reveal>
-              <Eyebrow className="text-[10px]">{num()} / Engineering</Eyebrow>
+              <Eyebrow className="text-[10px]">{num()} / Approach</Eyebrow>
               <h2 className="mt-5 font-serif text-4xl">{cs.architecture.heading}</h2>
             </Reveal>
             {wideDecisions || Diagram ? (

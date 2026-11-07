@@ -1,15 +1,15 @@
-import { Code, Cpu, FileCheck, Fingerprint, Handshake, Leaf, Shirt } from "lucide-react"
+import { Code, GraduationCap, Lightbulb, Megaphone, Scale, ShieldCheck, Store } from "lucide-react"
 import type { Project } from "@/content/projects"
 import { Photo } from "@/components/site/photo"
 import { cn } from "@/lib/utils"
 
 const icons = {
-  shirt: Shirt,
-  "file-check": FileCheck,
-  handshake: Handshake,
-  cpu: Cpu,
-  leaf: Leaf,
-  fingerprint: Fingerprint,
+  "shield-check": ShieldCheck,
+  lightbulb: Lightbulb,
+  "graduation-cap": GraduationCap,
+  store: Store,
+  scale: Scale,
+  megaphone: Megaphone,
   code: Code,
 }
 

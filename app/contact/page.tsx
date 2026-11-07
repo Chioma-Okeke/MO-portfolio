@@ -52,7 +52,7 @@ export default function ContactPage() {
             <div className="ml-auto max-w-md rotate-2 border border-blush/60 bg-background p-3 shadow-[0_40px_60px_-30px_rgba(31,29,29,0.3)] transition-transform duration-1000 ease-soft hover:rotate-0">
               <Photo
                 src={portraits.contact}
-                alt="Chioma smiling and holding up a peace sign"
+                alt="Portrait of Chisom Monica Onuorah"
                 tone="blush"
                 priority
                 zoom={false}
@@ -74,8 +74,8 @@ export default function ContactPage() {
           <Reveal>
             <h2 className="font-serif text-3xl">Roles &amp; Collaboration</h2>
             <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-muted-foreground">
-              Whether it&apos;s a security or software engineering role, a research collaboration, or you just want to chat
-              about film photography, my inbox is always open.
+              Whether it&apos;s a product management role, a brand partnership, or you just want to chat about
+              AI and social commerce, my inbox is always open.
             </p>
             <div className="mt-8 max-w-xs border-t border-border pt-8">
               <Eyebrow className="text-[10px]">Location</Eyebrow>
@@ -93,7 +93,7 @@ export default function ContactPage() {
         <Reveal className="mx-auto max-w-3xl">
           <Sparkle className="mx-auto size-6" />
           <p className="mt-8 font-serif text-3xl leading-snug italic md:text-4xl">
-            &ldquo;Soft Power is the ability to influence through excellence.&rdquo;
+            &ldquo;The best products are useful, and safe to use.&rdquo;
           </p>
           <p className="mt-8 font-script text-xl text-ink/70">looking forward to connecting</p>
         </Reveal>
