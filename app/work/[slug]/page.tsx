@@ -64,7 +64,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
   return (
     <article>
       {/* Title + showcase */}
-      <section className="mx-auto max-w-[1440px] px-6 pt-16 pb-20 md:px-24 md:pt-24">
+      <section className="mx-auto max-w-360 px-6 pt-16 pb-20 md:px-24 md:pt-24">
         <div className="flex items-end justify-between gap-6">
           <Reveal>
             <Eyebrow className="text-[10px]">
@@ -102,7 +102,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
               alt={`${project.title} interface`}
               priority
               sizes="(min-width: 1440px) 1200px, 100vw"
-              className="aspect-[16/10] shadow-2xl shadow-ink/15"
+              className="aspect-16/10 shadow-2xl shadow-ink/15"
               imageClassName={imagePositions[project.imagePosition ?? "left-top"]}
               zoom={false}
             />
@@ -119,7 +119,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
 
       {/* Facts */}
       <section className="border-y border-border bg-surface">
-        <Stagger className="mx-auto grid max-w-[1440px] grid-cols-2 gap-x-6 gap-y-10 px-6 py-14 md:grid-cols-4 md:px-24">
+        <Stagger className="mx-auto grid max-w-360 grid-cols-2 gap-x-6 gap-y-10 px-6 py-14 md:grid-cols-4 md:px-24">
           {cs.facts.map((f) => (
             <StaggerItem key={f.label}>
               <Eyebrow className="text-[10px]">{f.label}</Eyebrow>
@@ -130,7 +130,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
       </section>
 
       {/* Overview */}
-      <section className="mx-auto grid max-w-[1440px] gap-12 px-6 py-24 md:grid-cols-2 md:gap-20 md:px-24 md:py-32">
+      <section className="mx-auto grid max-w-360 gap-12 px-6 py-24 md:grid-cols-2 md:gap-20 md:px-24 md:py-32">
         <Reveal>
           <Eyebrow className="text-[10px]">{num()} / Overview</Eyebrow>
           <h2 className="mt-5 font-serif text-4xl leading-tight">{cs.overview.heading}</h2>
@@ -192,7 +192,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
       {/* Features */}
       {cs.features && (
         <section className="border-t border-border px-6 py-24 md:px-24 md:py-32">
-          <div className="mx-auto max-w-[1440px]">
+          <div className="mx-auto max-w-360">
             <Reveal>
               <Eyebrow className="text-[10px]">{num()} / Product</Eyebrow>
               <h2 className="mt-5 font-serif text-4xl">{cs.features.heading}</h2>
@@ -340,7 +340,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
       {/* Architecture */}
       {cs.architecture && (
         <section className="border-t border-border bg-surface px-6 py-24 md:px-24 md:py-32">
-          <div className="mx-auto max-w-[1440px]">
+          <div className="mx-auto max-w-360">
             <Reveal>
               <Eyebrow className="text-[10px]">{num()} / Approach</Eyebrow>
               <h2 className="mt-5 font-serif text-4xl">{cs.architecture.heading}</h2>
@@ -357,7 +357,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
                 {Diagram && (
                   // Scrolls sideways on small screens so labels stay readable
                   <ImageReveal className="mt-14 overflow-x-auto border border-border bg-background">
-                    <Diagram className="block w-full min-w-[720px] p-4 md:p-8" />
+                    <Diagram className="block w-full min-w-180 p-4 md:p-8" />
                   </ImageReveal>
                 )}
                 <Stagger
@@ -378,7 +378,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
               </>
             ) : (
             <div className="mt-14 grid gap-12 md:grid-cols-[2fr_1fr]">
-              <ImageReveal className="relative aspect-[16/10] border border-border bg-background">
+              <ImageReveal className="relative aspect-16/10 border border-border bg-background">
                 {cs.architecture.diagram ? (
                   <Photo src={cs.architecture.diagram} alt="System architecture diagram" className="absolute inset-0" />
                 ) : (
@@ -425,7 +425,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
       {/* Challenge + lessons */}
       {(cs.challenge || cs.lessons) && (
         <section className="border-t border-border px-6 py-24 md:px-24 md:py-32">
-          <div className="mx-auto max-w-[1440px]">
+          <div className="mx-auto max-w-360">
             {cs.challenge && (
               <div className={cn("grid items-center gap-14 md:gap-20", cs.challenge.impact ? "md:grid-cols-2" : "max-w-3xl")}>
                 <Reveal>
@@ -483,7 +483,7 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
           href={`/work/${next.slug}`}
           className="group block border-t border-border bg-surface px-6 py-20 md:px-24"
         >
-          <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6">
+          <div className="mx-auto flex max-w-360 items-center justify-between gap-6">
             <div>
               <Eyebrow className="text-[10px]">Next case study</Eyebrow>
               <p className="mt-4 font-serif text-4xl transition-colors duration-500 group-hover:text-wine md:text-6xl">

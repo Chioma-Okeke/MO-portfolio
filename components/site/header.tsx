@@ -36,7 +36,7 @@ export function Header() {
         overHero ? "border-transparent bg-blush" : "border-border bg-background/90 backdrop-blur-md"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6 md:h-20 md:px-16">
+      <div className="mx-auto flex h-16 max-w-360 items-center justify-between px-6 md:h-20 md:px-16">
         <Link href="/" className="font-serif text-xl tracking-tight md:text-2xl">
           {site.name}
         </Link>

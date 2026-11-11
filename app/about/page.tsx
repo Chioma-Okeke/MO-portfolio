@@ -60,15 +60,17 @@ export default function AboutPage() {
         <ImageReveal className="relative min-h-[480px] md:min-h-0">
           <Photo
             src={portraits.about}
-            alt="Portrait of Chisom Monica Onuorah"
+            alt="Chisom in a yellow sweater and wide-leg jeans, leaning against a slatted wood wall"
             tone="stone"
             hint="Editorial portrait"
             priority
             zoom={false}
             sizes="(min-width: 768px) 55vw, 100vw"
             className="absolute inset-0"
+            // The panel is wide on desktop: keep her face in frame when the tall photo is cropped
+            imageClassName="object-[center_30%]"
           />
-          <p className="absolute bottom-5 left-5 font-script text-base text-surface/90">Read the fine print.</p>
+          <p className="absolute bottom-5 left-5 font-script text-base text-surface drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">Read the fine print.</p>
         </ImageReveal>
       </section>
 

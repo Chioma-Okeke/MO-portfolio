@@ -12,7 +12,7 @@ export function Footer() {
     <footer>
       <FooterCta />
       <div className="border-t border-border bg-background">
-        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-3 px-6 py-8 text-[10px] tracking-[0.16em] uppercase md:flex-row md:justify-between md:px-16">
+        <div className="mx-auto flex max-w-360 flex-col items-center gap-3 px-6 py-8 text-[10px] tracking-[0.16em] uppercase md:flex-row md:justify-between md:px-16">
           <p>
             &copy; <CurrentYear /> {site.name}
           </p>

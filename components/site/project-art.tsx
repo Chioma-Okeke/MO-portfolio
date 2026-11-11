@@ -38,7 +38,7 @@ export function ProjectArt({ project, className }: { project: Project; className
   return (
     <div
       className={cn(
-        "group relative aspect-[16/10] overflow-hidden border border-border bg-surface",
+        "group relative aspect-16/10 overflow-hidden border border-border bg-surface",
         className
       )}
     >
@@ -53,7 +53,7 @@ export function ProjectArt({ project, className }: { project: Project; className
         <div className="absolute inset-[13%] flex items-center justify-center">
           <div
             className={cn(
-              "flex size-full items-center justify-center border transition-transform duration-[1200ms] ease-soft group-hover:scale-[1.03]",
+              "flex size-full items-center justify-center border transition-transform duration-1200 ease-soft group-hover:scale-[1.03]",
               tone
             )}
           >
