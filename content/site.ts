@@ -25,7 +25,7 @@ export const site = {
   email: "chisomonuorah20@gmail.com",
   location: "Ottawa, Canada / Open to Remote",
   socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/chisom-onuorah-355668247/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/chisom-onuorah-35566824" },
     { label: "ClaimCheck", href: "https://build-claimcheck-app.vercel.app" },
     { label: "Resume", href: "/resume.pdf" }, // file lives at public/resume.pdf
   ],

@@ -41,11 +41,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# personal photos and project screenshots (kept local, not committed)
+# personal photos and project screenshots (kept local, not committed).
+# They still go live: `vercel --prod` uploads from this folder and ignores .gitignore.
 /public/me/
-/public/LaundryInventory/
-/public/bridgeUp/
-/public/carbonLint/
+/public/claimcheck/
+/public/mo-contnet-space/
+
+# project briefs (kept local, not committed, and kept off the live site via .vercelignore)
+/public/*.docx
+/public/*_Brief.pdf
 
 .vercel
 .env*

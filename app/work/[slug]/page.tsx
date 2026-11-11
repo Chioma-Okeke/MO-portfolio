@@ -12,6 +12,21 @@ import { diagrams } from "@/components/diagrams"
 import { caseStudies, getProject, projectMeta } from "@/content/projects"
 import { cn } from "@/lib/utils"
 
+/** Small pill for build status: "Built"/"Live" read as done (wine), anything else as upcoming (muted) */
+function StatusTag({ status }: { status: string }) {
+  const done = /^(built|live)/i.test(status)
+  return (
+    <span
+      className={cn(
+        "rounded-full border px-2.5 py-0.5 text-[10px] font-medium tracking-[0.12em] uppercase",
+        done ? "border-wine/40 bg-wine/5 text-wine" : "border-border bg-surface text-muted-foreground"
+      )}
+    >
+      {status}
+    </span>
+  )
+}
+
 export function generateStaticParams() {
   return caseStudies.map((p) => ({ slug: p.slug }))
 }
@@ -132,8 +147,47 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
           {cs.overview.body.map((p) => (
             <p key={p}>{p}</p>
           ))}
+          {cs.overview.sources && (
+            <div className="border-t border-border pt-6">
+              <Eyebrow className="text-[10px]">Research</Eyebrow>
+              <ul className="mt-3 space-y-2">
+                {cs.overview.sources.map((s) => (
+                  <li key={s.href}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-draw pb-0.5 text-ink transition-colors hover:text-wine"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Reveal>
       </section>
+
+      {/* Audience */}
+      {cs.audience && (
+        <section className="border-t border-border bg-surface px-6 py-24 md:px-24 md:py-28">
+          <div className="mx-auto max-w-360">
+            <Reveal>
+              <Eyebrow className="text-[10px]">{num()} / Audience</Eyebrow>
+              <h2 className="mt-5 font-serif text-4xl">{cs.audience.heading}</h2>
+            </Reveal>
+            <Stagger className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+              {cs.audience.items.map((a) => (
+                <StaggerItem key={a.title} className="bg-surface p-7">
+                  <h3 className="font-serif text-xl">{a.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.body}</p>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+      )}
 
       {/* Features */}
       {cs.features && (
@@ -142,11 +196,17 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
             <Reveal>
               <Eyebrow className="text-[10px]">{num()} / Product</Eyebrow>
               <h2 className="mt-5 font-serif text-4xl">{cs.features.heading}</h2>
+              {cs.features.note && (
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">{cs.features.note}</p>
+              )}
             </Reveal>
             <Stagger className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-3">
               {cs.features.items.map((f, i) => (
                 <StaggerItem key={f.title}>
-                  <span className="font-serif text-wine">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="font-serif text-wine">{String(i + 1).padStart(2, "0")}</span>
+                    {f.status && <StatusTag status={f.status} />}
+                  </div>
                   <h3 className="mt-3 font-serif text-xl">{f.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.body}</p>
                 </StaggerItem>
@@ -162,6 +222,40 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
                 </div>
               </Reveal>
             )}
+          </div>
+        </section>
+      )}
+
+      {/* User flows */}
+      {cs.flows && (
+        <section className="border-t border-border bg-blush-soft px-6 py-24 md:px-24 md:py-32">
+          <div className="mx-auto max-w-360">
+            <Reveal>
+              <Eyebrow className="text-[10px]">{num()} / User Flows</Eyebrow>
+              <h2 className="mt-5 font-serif text-4xl">{cs.flows.heading}</h2>
+              {cs.flows.note && (
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">{cs.flows.note}</p>
+              )}
+            </Reveal>
+            <Stagger className="mt-14 grid gap-6 md:grid-cols-3">
+              {cs.flows.items.map((flow, f) => (
+                <StaggerItem key={flow.title} className="border border-border bg-background p-7 md:p-8">
+                  <p className="font-script text-lg text-wine">Flow {String.fromCharCode(65 + f)}</p>
+                  <h3 className="mt-1 font-serif text-2xl leading-snug">{flow.title}</h3>
+                  <Eyebrow className="mt-2 block text-[10px]">{flow.users}</Eyebrow>
+                  <ol className="mt-6 space-y-4">
+                    {flow.steps.map((step, i) => (
+                      <li key={step} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                        <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-wine/40 font-serif text-xs text-wine">
+                          {i + 1}
+                        </span>
+                        <span className="pt-0.5">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </StaggerItem>
+              ))}
+            </Stagger>
           </div>
         </section>
       )}
@@ -198,6 +292,47 @@ async function CaseStudy({ params }: { params: PageProps<"/work/[slug]">["params
                 </ImageReveal>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Next phase (roadmap) */}
+      {cs.nextPhase && (
+        <section className="border-t border-border px-6 py-24 md:px-24 md:py-32">
+          <div className="mx-auto max-w-360">
+            <Reveal className="grid gap-10 md:grid-cols-2 md:gap-20">
+              <div>
+                <div className="flex items-center gap-3">
+                  <Eyebrow className="text-[10px]">{num()} / Roadmap</Eyebrow>
+                  <StatusTag status={cs.nextPhase.status} />
+                </div>
+                <h2 className="mt-5 font-serif text-4xl leading-tight">{cs.nextPhase.heading}</h2>
+              </div>
+              <p className="text-sm leading-relaxed text-muted-foreground md:pt-10">{cs.nextPhase.body}</p>
+            </Reveal>
+            <Stagger className="mt-14 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+              {cs.nextPhase.items.map((item) => (
+                <StaggerItem key={item.title} className="flex flex-col bg-background p-7">
+                  <h3 className="font-serif text-xl">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+                  {item.control && (
+                    <p className="mt-auto border-t border-border pt-4 text-[13px] leading-relaxed text-ink">
+                      <span className="font-script text-base text-wine">you decide: </span>
+                      {item.control}
+                    </p>
+                  )}
+                </StaggerItem>
+              ))}
+            </Stagger>
+            {cs.nextPhase.principle && (
+              <Reveal className="mt-12 bg-blush-soft px-8 py-10 text-center md:px-16">
+                <Sparkle className="mx-auto size-4" />
+                <p className="mt-5 font-serif text-2xl md:text-3xl">{cs.nextPhase.principle.title}</p>
+                <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  {cs.nextPhase.principle.body}
+                </p>
+              </Reveal>
+            )}
           </div>
         </section>
       )}

@@ -14,7 +14,7 @@ export const intro = {
     body: [
         "I started my career in law. As Head of Contract and Insurance at Lekki Gardens Real Estate, I redesigned the letter-of-award workflow and cut contract turnaround time by 40%. That was my first product: a broken process, a clear problem, and a better way through it.",
         "Since then I've moved fully into product. I led delivery of Syncventory, a multi-store inventory and POS platform, as a volunteer PM at Nugi Technologies, and I was one of 450 finalists out of 12,362 interns in HNG's 10-stage elimination internship, shipping products with engineers, designers, DevOps and marketers.",
-        "Alongside that, I partner with e-commerce brands, including Shopify merchants, as a creator with 29K followers on Instagram. That's where ClaimCheck came from: an AI tool that helps small merchants catch risky marketing claims before they publish.",
+        "Alongside that, I partner with e-commerce brands, including Shopify merchants, as a creator with 29K followers on Instagram. Most recently, I built ClaimCheck, an AI-assisted prototype that helps small brands spot potentially risky product claims before they publish, inspired by family-run cosmetic brands back home.",
     ],
 };
 
@@ -61,7 +61,7 @@ export const human = {
             body: "As Chamber Head in law school, I ran 40+ moot court trials and debates.",
         },
     ],
-    currently: "Validating ClaimCheck with Shopify merchants from my creator network.",
+    currently: "Building ClaimCheck, an AI-assisted prototype for reviewing marketing claims.",
 };
 
 export const principles = [
@@ -84,7 +84,7 @@ export const experience = [
     {
         period: "Nov 2026 - Present",
         role: "Founder and Builder, ClaimCheck",
-        body: "Built and shipped an AI web app that flags risky claims in product listings and influencer captions, explains each risk in plain language, and suggests compliant rewrites. Now validating with Shopify merchants.",
+        body: "Built an AI-assisted prototype that helps small brands spot potentially risky product claims before they publish, with single-claim review, bulk CSV screening, and a creator-brief generator.",
         current: true,
     },
     {

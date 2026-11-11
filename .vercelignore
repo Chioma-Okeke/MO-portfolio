@@ -5,6 +5,10 @@
 resumes
 designs
 
+# Project briefs dropped into /public for reference - not for the live site
+public/*.docx
+public/*_Brief.pdf
+
 # Uncompressed originals; the site uses the .jpg copies next to them.
 # Listed one by one so any new photo you add is deployed by default.
 public/me/contact-page.png

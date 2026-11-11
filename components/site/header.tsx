@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Menu } from "lucide-react"
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { nav, site } from "@/content/site"
@@ -13,12 +13,27 @@ export function Header() {
   const [open, setOpen] = useState(false)
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`)
 
+  // On the home page the header melts into the hero's background until the hero
+  // (one screen tall) has scrolled away, then switches to the regular cream header
+  const [pastHero, setPastHero] = useState(false)
+  useEffect(() => {
+    if (pathname !== "/") return
+    const update = () => setPastHero(window.scrollY > window.innerHeight - 160)
+    update()
+    window.addEventListener("scroll", update, { passive: true })
+    window.addEventListener("resize", update)
+    return () => {
+      window.removeEventListener("scroll", update)
+      window.removeEventListener("resize", update)
+    }
+  }, [pathname])
+  const overHero = pathname === "/" && !pastHero
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b",
-        // On the home page the header melts into the hero's background
-        pathname === "/" ? "border-transparent bg-blush" : "border-border bg-background/90 backdrop-blur-md"
+        "sticky top-0 z-40 border-b transition-colors duration-500",
+        overHero ? "border-transparent bg-blush" : "border-border bg-background/90 backdrop-blur-md"
       )}
     >
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6 md:h-20 md:px-16">

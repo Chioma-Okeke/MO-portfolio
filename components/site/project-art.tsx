@@ -1,4 +1,4 @@
-import { Code, GraduationCap, Lightbulb, Megaphone, Scale, ShieldCheck, Store } from "lucide-react"
+import { Code, GraduationCap, Lightbulb, Megaphone, NotebookPen, Scale, ShieldCheck, Store } from "lucide-react"
 import type { Project } from "@/content/projects"
 import { Photo } from "@/components/site/photo"
 import { cn } from "@/lib/utils"
@@ -10,6 +10,7 @@ const icons = {
   store: Store,
   scale: Scale,
   megaphone: Megaphone,
+  "notebook-pen": NotebookPen,
   code: Code,
 }
 
