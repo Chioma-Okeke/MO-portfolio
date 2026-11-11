@@ -575,62 +575,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "contentq",
-    title: "ContentQ",
-    category: "product",
-    label: "Product Management · HNG Internship",
-    year: "2025",
-    subtitle: "A productivity app for creators.",
-    summary:
-      "A creator productivity app for capturing ideas, managing tasks and staying on schedule. I defined the requirements and user flows and took the MVP from idea to launch in 8 weeks.",
-    stack: ["Requirements", "User Flows", "ClickUp", "QA"],
-    icon: "lightbulb",
-    caseStudy: {
-      tagline: "From idea to launch in 8 weeks.",
-      facts: [
-        { label: "Role", value: "Product Manager Intern" },
-        { label: "Program", value: "HNG Internship (Top 4%)" },
-        { label: "Timeline", value: "8 Weeks" },
-        { label: "Team", value: "Engineering, Design, DevOps, Marketing" },
-      ],
-      overview: {
-        heading: "Creators have more ideas than systems.",
-        body: [
-          "As a creator myself, I know ideas show up at the worst times and slip away just as fast. ContentQ gives creators one place to capture ideas, turn them into tasks, and get reminded to follow through.",
-          "I built it during HNG's 10-stage elimination internship, where I was one of 450 finalists out of 12,362 interns.",
-        ],
-      },
-      features: {
-        heading: "What I owned",
-        items: [
-          {
-            title: "Idea capture",
-            body: "Defined the requirements and user flow for quickly saving an idea before it's lost.",
-          },
-          {
-            title: "Tasks",
-            body: "Mapped how ideas become tasks, so creators can move from inspiration to a finished post.",
-          },
-          {
-            title: "Notifications",
-            body: "Specified the reminders that keep creators on schedule without overwhelming them.",
-          },
-        ],
-      },
-      challenge: {
-        heading: "Shipping on an internship clock.",
-        body: [
-          "HNG moves fast and cuts teams at every stage. I turned requirements into ClickUp tickets, assigned and tracked them through to release, and defined QA test cases, tracking issues to resolution across the backend, mobile and data tracks.",
-        ],
-        impact: {
-          label: "Idea to launch",
-          value: "8 wks",
-          caption: "From first requirement to a launched MVP.",
-        },
-      },
-    },
-  },
-  {
     slug: "zedu",
     title: "Zedu",
     category: "ai",

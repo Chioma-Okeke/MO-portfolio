@@ -24,13 +24,14 @@ const colors = {
 
 const font = (file: string) => readFile(join(process.cwd(), "assets/fonts", file))
 
-// Uses the home hero photo. It's git-ignored, so fall back to a plain panel if
-// it isn't set or isn't on disk.
+// Uses the link-preview photo (portraits.linkPreview in content/site.ts). Photos in
+// /public/me are git-ignored, so fall back to a plain panel if it isn't on disk.
 async function loadPhoto() {
-  if (!portraits.hero) return null
+  const src = portraits.linkPreview
+  if (!src) return null
   try {
-    const file = await readFile(join(process.cwd(), "public", portraits.hero))
-    const type = /\.jpe?g$/i.test(portraits.hero) ? "jpeg" : "png"
+    const file = await readFile(join(process.cwd(), "public", src))
+    const type = /\.jpe?g$/i.test(src) ? "jpeg" : "png"
     return `data:image/${type};base64,${file.toString("base64")}`
   } catch {
     return null

@@ -48,5 +48,7 @@ export const portraits = {
   heroCaption: "", // handwritten note on the home hero photo (hidden when empty)
   person: undefined as string | undefined, // home "The Person" B&W portrait
   about: undefined as string | undefined, // about hero
-  contact: undefined as string | undefined, // contact page hero card
+  contact: "/me/contact-hero.png" as string | undefined, // contact page hero card
+  // Photo on the share image shown when a link to the site is posted (app/opengraph-image.tsx)
+  linkPreview: "/me/link-preview-image.png" as string | undefined,
 }

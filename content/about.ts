@@ -96,7 +96,7 @@ export const experience = [
     {
         period: "Oct - Dec 2025",
         role: "Product Manager Intern, HNG Internship",
-        body: "One of 450 finalists from 12,362 interns (top 4%). Defined requirements for Zedu, an AI learning platform, and took ContentQ, a creator productivity app, from idea to launch in 8 weeks.",
+        body: "One of 450 finalists from 12,362 interns (top 4%). Researched competing tools and defined requirements for Zedu, an AI learning platform, then tracked them through to release.",
     },
     {
         period: "Jan - Aug 2025",

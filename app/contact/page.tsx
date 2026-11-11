@@ -52,7 +52,7 @@ export default function ContactPage() {
             <div className="ml-auto max-w-md rotate-2 border border-blush/60 bg-background p-3 shadow-[0_40px_60px_-30px_rgba(31,29,29,0.3)] transition-transform duration-1000 ease-soft hover:rotate-0">
               <Photo
                 src={portraits.contact}
-                alt="Portrait of Chisom Monica Onuorah"
+                alt="Chisom smiling and adjusting her glasses, in a dark blazer, in front of a wood-panelled bench"
                 tone="blush"
                 priority
                 zoom={false}
